@@ -1,4 +1,3 @@
-using System.Net;
 using System.Net.Http.Headers;
 using System.Text.Json;
 
@@ -21,7 +20,7 @@ namespace UII
         /// <summary>
         /// Reads a list of all available operating systems. 
         /// </summary>
-        /// <returns>The list.</returns>
+        /// <returns>The list of available operating systems.</returns>
         public async Task<List<OperatingSystem>> ReadOsList()
         {
             using var client = CreateNewClient();
@@ -40,6 +39,13 @@ namespace UII
             return new List<OperatingSystem>();
         }
 
+        /// <summary>
+        /// Read a list of all available packages for a given distribution
+        /// </summary>
+        /// <param name="distribution">Name of the distribution, i.e. "debian"</param>
+        /// <param name="version">Version of the distribution, i.e. "10"</param>
+        /// <param name="architecture">Architecture of the distribution, i.e. "x86_64"</param>
+        /// <returns>The list of packages</returns>
         public async Task<PackageList> ReadPackageList(string distribution, string version, string architecture)
         {
             using var client = CreateNewClient();
@@ -65,7 +71,16 @@ namespace UII
             return new PackageList();
         }
 
-        public async Task Build(string distribution, string version, string architecture, string hostname,
+        /// <summary>
+        /// Build an ISO file
+        /// </summary>
+        /// <param name="path">Target path, where the ISO file should be saved to.</param>
+        /// <param name="distribution">Name of the distribution, i.e. "debian"</param>
+        /// <param name="version">Version of the distribution, i.e. "10"</param>
+        /// <param name="architecture">Architecture of the distribution, i.e. "x86_64"</param>
+        /// <param name="hostname">The host name of the installed operation system, i.e. "DemoPC"</param>
+        /// <param name="networks">The desired network configuration.</param>
+        public async Task Build(string path, string distribution, string version, string architecture, string hostname,
             List<Network> networks)
         {
             using var client = CreateNewClient();
@@ -83,7 +98,7 @@ namespace UII
             if (response.IsSuccessStatusCode)
             {
                 await using var bodyStream = await response.Content.ReadAsStreamAsync();
-                await using FileStream fs = File.OpenWrite("foo.iso");
+                await using FileStream fs = File.OpenWrite(path);
                 await bodyStream.CopyToAsync(fs);
             }
             else
@@ -98,7 +113,7 @@ namespace UII
             using var bodyReader = new StreamReader(bodyStream);
             var body = await bodyReader.ReadToEndAsync();
             var result = JsonSerializer.Deserialize<ErrorResponse>(body);
-            throw new RequestException(result?.errors ?? new List<string>(){ "Could not deserialize response"});
+            throw new RequestException(result?.errors ?? new List<string>() { "Could not deserialize response" });
         }
 
         private HttpClient CreateNewClient()
@@ -109,23 +124,6 @@ namespace UII
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.Add("client", "foo");
             return client;
-        }
-    }
-
-    internal class MyHandler : HttpMessageHandler
-    {
-        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
-            CancellationToken cancellationToken)
-        {
-            await using var bodyStream = await request.Content.ReadAsStreamAsync();
-            using var bodyReader = new StreamReader(bodyStream);
-            var body = await bodyReader.ReadToEndAsync();
-
-            return new HttpResponseMessage()
-            {
-                StatusCode = HttpStatusCode.Accepted,
-                Content = new StringContent("hello")
-            };
         }
     }
 }
