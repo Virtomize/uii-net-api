@@ -10,15 +10,15 @@ namespace UII
     public class OperatingSystem
     {
         [JsonPropertyName("displayname")]
-        public string DisplayName { get; set; }
+        public string DisplayName { get; set; } = string.Empty;
     
         [JsonPropertyName("dist")]
-        public string Distribution { get; set; }
+        public string Distribution { get; set; }= string.Empty;
     
         [JsonPropertyName("version")]
-        public string Version { get; set; }
+        public string Version { get; set; }= string.Empty;
     
         [JsonPropertyName("arch")]
-        public string Architecture { get; set; }
+        public string Architecture { get; set; }= string.Empty;
     }
 }

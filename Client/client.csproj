@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -6,7 +6,24 @@
         <Nullable>enable</Nullable>
         <AssemblyName>UiiClient</AssemblyName>
         <RootNamespace>Uii</RootNamespace>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Unattended Install Images Client</Title>
+        <Authors>Virtomize GmbH</Authors>
+        <Description>A client for the Virtomize Unattended Install Images service, which creates self installing ISOs.</Description>
+        <PackageProjectUrl>https://uii.virtomize.com/</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Virtomize/uii-net-api</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Copyright>Copyright (c) Virtomize GmhH 2022</Copyright>
+      
     </PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
+	</ItemGroup>
+
+  <ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="README.md" />
+	</ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
