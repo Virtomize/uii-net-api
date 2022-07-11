@@ -1,7 +1,8 @@
-Learn more about [Virtomize](virtomize.com)
-or follow us on social media
-[Twitter](http://twitter.com/virtomize)
-[LinkedIn](http://www.linkedin.com/company/virtomize)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VBXHBYFU44T5W&source=url)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/virtomize/uii-go-api/blob/master/LICENSE)
+[![Website](https://img.shields.io/badge/%40-Virtomize-%231e828c)](https://virtomize.com)
+[![Twitter](https://badgen.net/badge/icon/twitter?icon=twitter&label)](https://twitter.com/virtomize)
+[![LinkedIn](https://img.shields.io/badge/linkedIn-%20-blue.svg?style=social&logo=linkedin)](https://www.linkedin.com/company/virtomize/)
 
 # UUI .Net API
 This repository contains an implementation of a client for the [**Virtomize Unattended Install Images API**](https://uii.virtomize.com/).
