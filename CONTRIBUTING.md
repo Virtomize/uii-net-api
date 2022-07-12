@@ -118,7 +118,7 @@ $ git add files/changed
 $ git commit
 $ git push origin example-branch
 ```
-**Approvement and Changes**
+**Approval and Changes**
 
 Whenever a contributor reviews a Pull Request they may find specific details that they would like to see changed or fixed. 
 These may be as simple as fixing a typo, or may involve substantive changes to the code you have written. 
