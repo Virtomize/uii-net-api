@@ -25,10 +25,6 @@ Just open a [regular issue](https://github.com/virtomize/uii-net-api/issues/new)
 
 ## Pull Requests
 
-### Dependencies
-
-This project uses [Mage](https://magefile.org/) which is a replacement for the classical make.
-
 ### 1. Fork 
 
 Fork the project [on Github](https://github.com/virtomize/uii-net-api/) and clone your fork
@@ -58,15 +54,7 @@ $ git checkout -b example-branch -t upstream/master
 
 ### 3. Code
 
-Follow the [official code guidelines](https://golang.org/doc/effective_go.html).
-
-To make sure the code runs correct, test the code using:
-
-```
-mage test
-```
-
-also add unit tests to test your code contributions.
+Add unit tests to test your code contributions.
 
 For new features add a short description in the README.md.
 
@@ -111,35 +99,17 @@ $ git push origin example-branch
 
 ### 7. Open the Pull Request
 
-From within GitHub, by opening a new Pull Request will present you with a template that should be filled out:
+From within GitHub, by opening a new Pull Request will present you with a template.
 
-```
-<!--
-Thank you for your pull request. Please provide a description above and review
-the requirements below.
+Please fill out all details, feel free to skip not necessary parts or if you're not sure what to fill in.
 
-Bug fixes and new features should include unit tests.
-
-Contributors guide: https://github.com/virtomize/uii-net-api/blob/master/CONTRIBUTING.md
--->
-
-##### Checklist
-<!-- Remove items that do not apply. For completed items, change [ ] to [x]. -->
-
-- [ ] `mage test` passes
-- [ ] unit tests are included and tested
-- [ ] documentation is added or changed
-```
-
-Please fill out all details, feel free to skip not nessesary parts or if you're not sure what to fill in.
-
-Once opened, the Pull Request is opend and will be reviewed.
+Once opened, the Pull Request is opened and will be reviewed.
 
 ### 8. Updates and discussion
 
 While reviewing you will probably get some feedback or requests for changes to your Pull Request. This is normal and a necessary part of the process to evaluate the changes and there correctness. 
 
-To make changes to an existsing Pull Request, make the changes to your local branch.
+To make changes to an existing Pull Request, make the changes to your local branch.
 Add a new commit including those changes and push them to your fork.
 The Pull Requests will automatically updated by GitHub.
 
