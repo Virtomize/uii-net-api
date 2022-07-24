@@ -1,10 +1,12 @@
 name: Format check on pull request
-on:
+on:  
+  pull_request
+
   push:
     paths:
       - "**.cs"
       - ".editorconfig"
-
+  
 jobs:
   check-format:
     runs-on: windows-latest
