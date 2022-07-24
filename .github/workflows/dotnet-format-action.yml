@@ -21,7 +21,7 @@ jobs:
           action: "fix"
           only-changed-files: true
           folder: "."
-      
+
       - name: Commit files
         if: steps.format.outputs.has-changes == 'true'
         uses: EndBug/add-and-commit@v4.1.0
