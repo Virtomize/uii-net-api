@@ -8,13 +8,24 @@ namespace UII
     /// </summary>
     public class Client
     {
-        private readonly string Token;
+        private readonly IHttpClientFactory ClientFactory;
 
-        private static readonly string BaseUrl = "https://api.virtomize.com/uii/";
-
-        public Client(string token)
+        /// <summary>
+        /// Construct a new UII client by providing an official authorization token
+        /// </summary>
+        /// <param name="token">The authorization token.</param>
+        public Client(string token) : this(new DefaultHttpClientFactory(token))
         {
-            this.Token = token;
+        }
+
+        /// <summary>
+        /// Construct a new UII client by providing a factory containing the logic of how to create
+        /// a HttpClient.
+        /// </summary>
+        /// <param name="factory">A factory for HTTP clients.</param>
+        public Client(IHttpClientFactory factory)
+        {
+            this.ClientFactory = factory;
         }
 
         /// <summary>
@@ -23,7 +34,7 @@ namespace UII
         /// <returns>The list of available operating systems.</returns>
         public async Task<List<OperatingSystem>> ReadOsList()
         {
-            using var client = CreateNewClient();
+            using var client = this.ClientFactory.BuildClient();
             var response = await client.GetAsync("oslist");
 
             if (response.IsSuccessStatusCode)
@@ -118,12 +129,7 @@ namespace UII
 
         private HttpClient CreateNewClient()
         {
-            var client = new HttpClient( /*new MyHandler()*/);
-            client.BaseAddress = new Uri(BaseUrl);
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", this.Token);
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Add("client", "foo");
-            return client;
+            return this.ClientFactory.BuildClient();
         }
     }
 }

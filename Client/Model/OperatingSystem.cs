@@ -11,14 +11,14 @@ namespace UII
     {
         [JsonPropertyName("displayname")]
         public string DisplayName { get; set; } = string.Empty;
-    
+
         [JsonPropertyName("dist")]
-        public string Distribution { get; set; }= string.Empty;
-    
+        public string Distribution { get; set; } = string.Empty;
+
         [JsonPropertyName("version")]
-        public string Version { get; set; }= string.Empty;
-    
+        public string Version { get; set; } = string.Empty;
+
         [JsonPropertyName("arch")]
-        public string Architecture { get; set; }= string.Empty;
+        public string Architecture { get; set; } = string.Empty;
     }
 }
