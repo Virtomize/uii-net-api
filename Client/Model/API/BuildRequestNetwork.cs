@@ -18,8 +18,8 @@ internal class BuildRequestNetwork
     public bool dhcp { get; init; }
 
     public string domain { get; init; } = string.Empty;
-    
-    public IEnumerable<string> dns{ get; init; } = Array.Empty<string>();
+
+    public IEnumerable<string> dns { get; init; } = Array.Empty<string>();
 
     public string ipnet { get; init; } = string.Empty;
 

@@ -7,10 +7,10 @@ namespace UII
         [JsonPropertyName("dist")]
         public string Distribution { get; set; } = String.Empty;
 
-        [JsonPropertyName("version")] 
+        [JsonPropertyName("version")]
         public string Version { get; set; } = string.Empty;
 
-        [JsonPropertyName("packages")] 
+        [JsonPropertyName("packages")]
         public List<string> Packages { get; set; } = new List<string>();
     }
 }
